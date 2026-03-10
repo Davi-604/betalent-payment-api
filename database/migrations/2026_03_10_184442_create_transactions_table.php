@@ -11,15 +11,13 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('client_id')->constrained('clients')->nullOnDelete();
-            $table->foreignId('gateway_id')->constrained('gateways')->nullOnDelete();
+            $table->foreignId('client_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('gateway_id')->nullable()->constrained()->nullOnDelete();
             
             $table->string('external_id')->nullable();
             $table->string('status');
             $table->float('amount');
             $table->string('card_last_numbers', 4);
-
-            $table->timestamps();
 
             $table->timestamps();
         });

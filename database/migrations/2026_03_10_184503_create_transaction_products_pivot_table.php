@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('transaction_products_pivot', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('transaction_id')->constrained('transactions')->nullOnDelete();
-            $table->foreignId('product_id')->constrained('products')->nullOnDelete();
+            $table->foreignId('transaction_id')->nullable()->constrained('transactions')->nullOnDelete();
+            $table->foreignId('product_id')->nullable()->constrained('products')->nullOnDelete();
             $table->float('quantity')->default(0);
             
             $table->timestamps();
